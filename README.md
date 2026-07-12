@@ -1,20 +1,38 @@
-# Demo Streamlit - Visualización, ML y XAI
+# Aplicacion Streamlit - Exploracion, Prediccion y XAI
 
-El código de este directorio está pensado para poner en práctica las funcionalidades básicas de Streamlit de acuerdo a lo mostrado en clases. En particular, usaremos un _dataset_ de Airbnb.
+Aplicacion de analitica para el dataset de Airbnb con 3 secciones principales: Inicio, Exploracion y XAI.
 
-## Estructura de archivos
+## Estructura actual
 
-1. `Airbnb_Locations`: _dataset_ para desarrollar el _dashboard_.
-2. `app.py`: archivo principal del _dashboard_.
-3. `constantes.py`: archivo .py con algunas constantes a utilizar en `app.py`
-4. `utils.py`: archivo .py con algunas funciones de utilidad a utilizar en `app.py`
-5. `ml.py`: archivo .py con las funciones necesarias para agregar la sección de ML en la interfaz.
-6. `requirements.txt`: librerías de Python necesarias para construir el dashboard.
-7. `EntrenarPipeline.ipynb`: _notebook_ para entrenar modelo y guardarlo como un archivo.
-8. `pipeline_model.pkl`: modelo entrenado para su posterior uso.
-9. `README.md`: este archivo con el detalle de la demo.
-10. `.gitignore`: archivo de `git` para indicar qué cosas no se deben subir a un repositorio de Github.
+1. `app.py`: entry point y navegacion principal.
+2. `paginas/home.py`: resumen del dataset.
+3. `paginas/exploration.py`: mapa por ciudad y visualizaciones en tabs (Altair, Seaborn, Plotly).
+4. `paginas/prediction_xai.py`: formulario de prediccion y explicaciones LIME/SHAP.
+5. `models/predictor.py`: carga de pipeline, formulario y prediccion.
+6. `utils/data.py`: carga de datos, resumen y alineacion de features para el pipeline.
+7. `utils/xai.py`: utilidades para SHAP y LIME.
+8. `Airbnb_Locations.csv`: datos de entrada.
+9. `pipeline_model.pkl`: modelo entrenado.
+10. `requirements.txt`: dependencias.
 
-## Cómo ejecutar
-1. Instalar librerías: `pip install -r requirements.txt`.
-2. Ejecutar: `streamlit run app.py`
+## Flujo de la app
+
+1. **Inicio**: metricas generales del dataset.
+2. **Exploracion**:
+	- filtros simples por pais y capacidad,
+	- mapa por ciudad,
+	- tab Altair (barras + pie interactivos por aire acondicionado),
+	- tab Seaborn (boxplot + heatmap de correlacion),
+	- tab Plotly con graficos equivalentes.
+3. **XAI**:
+	- prediccion primero,
+	- luego explicaciones calculadas en paralelo,
+	- se muestra LIME y despues SHAP waterfall.
+
+## Ejecucion
+
+1. Instalar dependencias:
+	- `pip install -r requirements.txt`
+2. Ejecutar la app:
+	- `streamlit run app.py`
+
