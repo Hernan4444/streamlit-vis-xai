@@ -1,5 +1,3 @@
-"""Pagina de exploracion analitica con multiples librerias."""
-
 import altair as alt
 import matplotlib.pyplot as plt
 import plotly.express as px
@@ -8,7 +6,6 @@ import streamlit as st
 
 
 def _apply_filters(df):
-    """Aplica solo dos filtros sencillos: pais y capacidad."""
     filtered = df.copy()
 
     with st.expander("Filtros de visualizacion", expanded=True):
@@ -29,7 +26,6 @@ def _apply_filters(df):
 
 
 def interactive_view_altair(df):
-    """Visualizaciones interactivas con Altair."""
     st.subheader("Propiedad y servicio de aire acondicionado")
     st.write("Puedes presionar la leyenda del pie chart para filtrar los datos.")
 

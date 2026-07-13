@@ -20,12 +20,10 @@ MODEL_COLUMNS = [
 
 @st.cache_resource()
 def load_pipeline(model_path="pipeline_model.pkl"):
-    """Carga el pipeline entrenado desde disco."""
     return joblib.load(model_path)
 
 
 def get_pipeline_features(pipeline, df):
-    """Obtiene la lista de features esperadas por el pipeline."""
     if hasattr(pipeline, "feature_names_in_"):
         return [str(c) for c in pipeline.feature_names_in_]
 
@@ -34,7 +32,6 @@ def get_pipeline_features(pipeline, df):
 
 
 def _binary_to_int(value):
-    """Convierte representaciones binarias comunes a 0/1."""
     text = str(value).strip().lower()
     if text in {"1", "si", "sí", "true", "t", "yes", "y"}:
         return 1
@@ -44,7 +41,6 @@ def _binary_to_int(value):
 
 
 def _binary_options(series):
-    """Genera opciones binarias normalizadas para selectbox."""
     unique_values = series.dropna().unique().tolist()
     normalized = sorted({_binary_to_int(v) for v in unique_values})
     if normalized == [0, 1]:
@@ -53,7 +49,6 @@ def _binary_options(series):
 
 
 def build_fixed_form(features_df, form_key="prediction_form"):
-    """Crea un formulario fijo con columnas conocidas del modelo."""
     user_input = {}
 
     for col in MODEL_COLUMNS:
@@ -121,7 +116,6 @@ def build_fixed_form(features_df, form_key="prediction_form"):
 
 
 def predict_with_pipeline(pipeline, input_row):
-    """Ejecuta prediccion y probabilidades (si aplica)."""
     input_df = pd.DataFrame([input_row])
     prediction = pipeline.predict(input_df)
 

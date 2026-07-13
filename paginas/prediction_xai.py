@@ -1,11 +1,7 @@
-"""Pagina de prediccion y explicabilidad con SHAP y LIME."""
-
 from concurrent.futures import ThreadPoolExecutor
-
 import numpy as np
 import pandas as pd
 import streamlit as st
-
 from models.predictor import build_fixed_form, get_pipeline_features, predict_with_pipeline
 from utils.data import match_pipeline_features
 from utils.xai import (
@@ -16,7 +12,6 @@ from utils.xai import (
 
 
 def render_prediction_xai(df, pipeline):
-    """Renderiza formulario de prediccion y explicaciones XAI."""
     st.header("Prediccion y Explicabilidad del Modelo (XAI)")
 
     feature_names = get_pipeline_features(pipeline, df)

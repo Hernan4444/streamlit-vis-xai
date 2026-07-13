@@ -1,14 +1,11 @@
-"""Pagina de inicio del dashboard."""
-
 import streamlit as st
 from utils.data import get_dataset_summary
 
 
 def render_home(df):
-    """Renderiza resumen general del proyecto y del dataset."""
     summary = get_dataset_summary(df)
 
-    st.title("Proyecto de Analitica y XAI para Dataset Tabular")
+    st.title("Proyecto de Analitica y XAI para Dataset Tabular Airbnb")
     st.write("Explora datos, construye intuicion visual y entiende predicciones con SHAP y LIME.")
 
     c1, c2 = st.columns(2)
@@ -25,7 +22,7 @@ def render_home(df):
         st.metric("Variables categoricas", str(summary["cantidad_categoricas"]))
         st.caption(", ".join(summary["columnas_categoricas"][:6]))
 
-    st.markdown("### Como usar esta aplicacion")
-    st.markdown("1. Revisa el estado general del dataset en esta pagina.")
-    st.markdown("2. Analiza distribuciones, relaciones y composicion con graficos interactivos en Exploracion.")
+    st.markdown("### ¿Cómo usar esta aplicacion?")
+    st.markdown("1. Revisa el estado general del _dataset_ en esta pagina.")
+    st.markdown("2. Analiza distribuciones, relaciones y composicion con graficos interactivos en Visualizaciones.")
     st.markdown("3. En Prediccion y XAI ingresa un caso, predice con el pipeline y analiza explicaciones locales y globales.")
