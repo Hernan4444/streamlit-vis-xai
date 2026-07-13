@@ -20,7 +20,7 @@ def main():
             "Navegacion",
             options=[
                 "Inicio",
-                "Exploracion",
+                "Visualizaciones",
                 "XAI",
             ],
             label_visibility="hidden",
@@ -30,7 +30,7 @@ def main():
 
     if page == "Inicio":
         render_home(df)
-    elif page == "Exploracion":
+    elif page == "Visualizaciones":
         dataset_info = analyze_dataset(df)
         render_exploration(
             df=df,
